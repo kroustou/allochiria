@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+     <title>{Title}{block:PostSummary} | {PostSummary}{/block:PostSummary}{block:SearchPage} | {lang:Search results for SearchQuery}{/block:SearchPage}</title>
+     <meta name="description" content="{MetaDescription}" />
+     <meta name="if:Show description" content="1" />
+     <meta name="if:Show search" content="1" />
+     <meta name="text:Twitter name" content="" />
+     <meta name="text:Disqus Shortname" content="" />
+     <meta name="text:Google Analytics ID" content="" />
+     <link rel="shortcut icon" href="{Favicon}" />
+     <link rel="alternate" type="application/rss+xml" title="{Title}" href="{RSS}" />
+    <link rel="stylesheet" href="http://static.tumblr.com/f1whv92/Mp9l6ewcg/reset.css" />
+    <link rel="stylesheet" href="static/style.css" />
+
+    <style type="text/css">
+        {CustomCSS}
+    </style>
+
+<!--[if IE]>
+     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+</head>
+<body>
+
+    <header id="masthead" class="clearfix">
+        <div id="thehead">
+            <h1 class="cufon"><a href="/">{Title}</a></h1>
+            <form action="/search" method="get" id="frmSearch">
+                <input type="text" id="txtSearch" name="q" value="{SearchQuery}" placeholder="search"/>
+            </form>
+
+            {block:Description}
+                <div id="siteDescription">{Description}</div>
+            {block:Description}
+
+           <nav id="mainNav">
+                {block:HasPages}
+                    {block:Pages}<li><a href="{URL}">{Label}</a></li>{block:Pages}
+                {/block:HasPages}
+                {block:AskEnabled}<li><a href="/ask">Ask</a></li>{/block:AskEnabled}
+                {block:SubmissionsEnabled}<li><a href="/submit">Submit</a></li>{/block:SubmissionsEnabled}
+                    <li><a href="/archive">Archive</a></li>
+                    <li><a href="/random">Random</a></li>
+                    <li><a href="{RSS}">RSS</a></li>
+                    <li><a href="javascript:;" id="btnSearch">Search</a></li>
+                {block:IfTwitterName}
+                    <li><a href="http://twitter.com/{text:Twitter name}">Twitter</a></li>
+                {/block:IfTwitterName}
+           </nav>
+        </div>
+    </header>
+
+    <section id="main" class="clearfix">
+        <div class="layout">
+        {block:SearchPage}
+            <article>
+                <div>
+                    <div class="searchPage">
+                        <h2>Search results for <a href="{URLSafeSearchQuery}">{SearchQuery}</a></h2>
+                    </div>
+                    {block:NoSearchResults}
+                        <div class="searchPageText">
+                           <p>I’m sorry, but we couldn't find anything matching "<b>{SearchQuery}</b>". Suggestions:</p>
+                           <ul>
+                              <li>Make sure all words are spelled correctly.</li>
+                              <li>Try different keywords.</li>
+                              <li>Try more general keywords.</li>
+                           </ul>
+                        </div>
+                    {/block:NoSearchResults}
+                </div>
+            </article>
+        {/block:SearchPage}
+
+        {block:TagPage}
+            <article>
+                <div>
+                   <div class="searchPage">
+                   <h2>Posts tagged <a href="{TagURL}">{Tag}</a></h2>
+                   </div>
+                </div>
+            </article>
+        {/block:TagPage}
+
+        {block:Posts}
+             <div id="designline">
+                <h5 class="postDate">
+                   <abbr>{block:Date}<a href="{Permalink}">{DayOfMOnth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}{block:NoteCount} | <a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount} {block:IfDisqusShortname}| <a class="dsq-comment-count" href="{Permalink}#disqus_thread">Comments</a>
+                        <script type="text/javascript">
+                            var disqus_shortname = '{text:Disqus Shortname}';
+
+                            (function () {
+                                var s = document.createElement('script'); s.async = true;
+                                s.type = 'text/javascript';
+                                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+                            }());
+                        </script>
+                    {/block:IfDisqusShortname}
+                    </abbr>
+                </h5>
+            </div>
+
+            <article>
+                <div>
+                   {block:Text}
+                      {block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+                      {Body}
+                   {/block:Text}
+
+                   {block:Photo}
+                        {LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" />{LinkCloseTag}
+                        {block:Caption}<div class="photoCaption">{Caption}</div>{/block:Caption}
+                   {/block:Photo}
+
+                   {block:Photoset}
+                      <div class="media">{Photoset-500}</div>
+                      {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+                   {/block:Photoset}
+
+                   {block:Quote}
+                      <div id="quoteText"><h2>{Quote}</h2></div>
+                      {block:Source}<div id="quoteSource"><p>&mdash;{Source}</p></div>{/block:Source}
+                   {/block:Quote}
+
+                   {block:Link}
+                      <h2><a href="{URL}" {Target}>{Name}</a></h2>
+                      {block:Description}
+                      <div>{Description}</div>
+                      {/block:Description}
+                   {/block:Link}
+
+                  {block:Chat}
+                     {block:Title}<h2>{Title}</h2>{/block:Title}
+                     <ul class="chat">
+                        {block:Lines}
+                        <li>{block:Label}<strong>{Label}</strong>{/block:Label} {Line}</li>
+                        {/block:Lines}
+                     </ul>
+                  {/block:Chat}
+
+                  {block:Audio}
+                     <div class="audioleft">
+                        <div class="audioc">
+                        <div class="audio">{AudioPlayerBlack}</div>
+                        </div>
+                     </div>
+                     <div class="audioright">
+                        <div class="audioCaption">{block:Artist}<b>{Artist}</b>{/block:Artist}
+                            <p>&mdash;{block:TrackName}{TrackName}{/block:TrackName}</p>
+                        </div>
+                     </div>
+                     <div class="audioClear"></div>
+                     <div class="audioContainer">
+                        {block:Caption}{Caption}{/block:Caption}
+                     </div>
+                  {/block:Audio}
+
+                  {block:Video}
+                     <div class="media">{Video-500}</div>
+                     {block:Caption}<div>{Caption}</div>{/block:Caption}
+                  {/block:Video}
+
+                  {block:Answer}
+                     <h3>{Asker} asked: {Question}</h3>
+                     {Answer}
+                  {/block:Answer}
+
+                  {block:Date}
+
+                  {block:PostNotes}
+                     {PostNotes}
+                  {/block:PostNotes}
+
+                  {block:Date}
+
+                </div>
+            </article>
+        {/block:Posts}
+
+        {block:PermalinkPage}
+            {block:IfDisqusShortname}
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = '{text:Disqus Shortname}';
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            {/block:IfDisqusShortname}
+        {/block:PermalinkPage}
+
+        {block:PermalinkPagination}
+            <nav id="pageNav">
+               <ul class="clearfix">
+                  {block:PreviousPost}<li><a href="{PreviousPost}" id="pageNavNewer">Previous</a></li>{/block:PreviousPost}
+                  {block:NextPost}<li><a href="{NextPost}" id="pageNavOlder">Next</a></li>{/block:NextPost}
+               </ul>
+            </nav>
+        {/block:PermalinkPagination}
+
+        {block:Pagination}
+            <nav id="pageNav">
+               <ul class="clearfix">
+                 {block:PreviousPage}<li><a href="{PreviousPage}" id="pageNavNewer">Newer</a></li>{/block:PreviousPage}
+                 {block:JumpPagination length="5"}
+                 {block:CurrentPage}<li><a href="{URL}" class="active">{PageNumber}</a></li>{/block:CurrentPage}
+                 {block:JumpPage}<li><a href="{URL}">{PageNumber}</a></li>{/block:JumpPage}
+                 {/block:JumpPagination}
+                 {block:NextPage}<li><a href="{NextPage}" id="pageNavOlder">Older</a></li>{/block:NextPage}
+               </ul>
+            </nav>
+        {/block:Pagination}
+
+        {block:DayPagination}
+            <nav id="pageNav">
+               <ul class="clearfix">
+                  {block:PreviousDayPage}<li><a href="{PreviousDayPage}">&laquo; {DayOfMonth} {ShortMonth}</a></li>{/block:PreviousDayPage}{block:NextDayPage}|<li><a href="{NextDayPage}">{DayOfMonth} {ShortMonth} &raquo;</a></li>{block:NextDayPage}
+               </ul>
+            </nav>
+        {/block:DayPagination}
+
+        </div><!-- END layout -->
+    </section>
+
+    <footer id="sitemeta">
+        <div class="clearfix">
+           <div class="thefooter">
+              <p>Allochiria</p>
+           </div>
+        </div>
+    </footer>
+
+    {block:IfGoogleAnalyticsID}
+        <script type="text/javascript">var gaJsHost=(("https:"==document.location.protocol)?"https://ssl.":"http://www.");document.write(unescape("%3Cscript src='"+gaJsHost+"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try{var pageTracker=_gat._getTracker("{text:Google Analytics ID}");pageTracker._trackPageview()}catch(err){}</script>
+    {block:IfGoogleAnalyticsID}
+</body>
+</html>
