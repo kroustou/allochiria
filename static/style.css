@@ -109,7 +109,6 @@
 /*----- SEARCH FORM -----*/
 
  #frmSearch {
-    padding-top: 20px;
     display: inline-block;
  }
 
@@ -119,6 +118,7 @@
     font: 12px/12px Georgia, "Times New Roman", Times, serif;
     color: #222;
     border: 0px;
+    width: 60px;
  }
 
 /*----- MAIN HEADER NAV STRIP -----*/
@@ -145,7 +145,7 @@
 
  #mainNav a:link, #mainNav a:visited {
     padding: 0;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 14px;
     margin: 0 2px;
     text-decoration: none;
