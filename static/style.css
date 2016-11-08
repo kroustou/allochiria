@@ -110,11 +110,11 @@
 
  #frmSearch {
     padding-top: 20px;
+    display: inline-block;
  }
 
  #txtSearch {
     background: url(http://static.tumblr.com/bpryy0m/6lRl6gmys/search.jpg) left no-repeat;
-    width: 225px;
     padding: 2px 0 0 20px;
     font: 12px/12px Georgia, "Times New Roman", Times, serif;
     color: #222;
@@ -145,7 +145,7 @@
 
  #mainNav a:link, #mainNav a:visited {
     padding: 0;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 14px;
     margin: 0 2px;
     text-decoration: none;

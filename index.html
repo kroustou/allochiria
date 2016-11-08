@@ -28,9 +28,7 @@
     <header id="masthead" class="clearfix">
         <div id="thehead">
             <h1 class="cufon"><a href="/">{Title}</a></h1>
-            <form action="/search" method="get" id="frmSearch">
-                <input type="text" id="txtSearch" name="q" value="{SearchQuery}" placeholder="search"/>
-            </form>
+
 
             {block:Description}
                 <div id="siteDescription">{Description}</div>
@@ -45,7 +43,11 @@
                     <li><a href="/archive">Archive</a></li>
                     <li><a href="/random">Random</a></li>
                     <li><a href="{RSS}">RSS</a></li>
-                    <li><a href="javascript:;" id="btnSearch">Search</a></li>
+                    <li>
+                      <form action="/search" method="get" id="frmSearch">
+                        <input type="text" id="txtSearch" name="q" value="{SearchQuery}" placeholder="search"/>
+                      </form>
+                    </li>
                 {block:IfTwitterName}
                     <li><a href="http://twitter.com/{text:Twitter name}">Twitter</a></li>
                 {/block:IfTwitterName}
