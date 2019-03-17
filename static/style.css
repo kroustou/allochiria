@@ -12,8 +12,8 @@
     background-image: url("https://f4.bcbits.com/img/0009070553_130.jpg");
     background-size: 100%;
  }
-body * {
- background: white !important;
+body #wrapper {
+ background: white;
 }
 
  h1, h2, h3, hQ {
