@@ -3,14 +3,18 @@
  }
 
  body {
-    background: #ffffff;
     color: #222;
     font-family: 'Open Sans', sans-serif;
     padding-top: 25px;
     text-align: center;
     width:500px;
     margin: 0 auto;
+    background-image: url("https://f4.bcbits.com/img/0009070553_130.jpg");
+    background-size: 100%;
  }
+body * {
+ background: white !important;
+}
 
  h1, h2, h3, hQ {
     font-family: 'Open Sans', sans-serif;
