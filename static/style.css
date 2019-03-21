@@ -11,7 +11,9 @@
     margin: 0 auto;
     background-image: url("https://f4.bcbits.com/img/0009070553_130.jpg");
     background-size: 100%;
- }
+    background-attachment: fixed;
+}
+
 body #wrapper {
  background: white;
  padding: 20px;
